@@ -61,7 +61,17 @@ I implemented the square detection logic using the "NetTopologySuite (NTS)" libr
 ---
 
 ### 6. Setup Tests (Bonus)
-Creat xUnit tests to validate the algorithm.  
+I added a new test project `SquaresApi.Tests` using "xUnit" to verify the correctness of the square-detection algorithm.
+
+I chose to rely on NetTopologySuite’s Polygon.IsRectangle, which detects only axis-aligned rectangles/squares.
+Rotated squares are not included, I prioritized correctness and simplicity using the library’s built-in geometry.
+
+### What’s tested:
+- Detection of simple axis-aligned squares  
+- Handling of duplicate points  
+- Behavior when no squares exist  
+
+All tests pass successfully with `dotnet test`.
 
 ---
 
