@@ -35,5 +35,22 @@ app.MapPost("/points/import", ([FromBody] ImportPointsDto dto, IPointStore store
 });
 
 
+// Add a single point. 201 if new, 409 if it already exists.
+app.MapPost("/points", ([FromBody] CreatePointDto dto, IPointStore store) =>
+{
+    var point = new Point(dto.X, dto.Y);
+    var added = store.Add(point);
+
+    if (added)
+    {
+        return Results.Created($"/points/{dto.X},{dto.Y}", dto);
+    }
+    else
+    {
+        return Results.Conflict("Point already exists.");
+    }
+});
+
+
 
 app.Run();

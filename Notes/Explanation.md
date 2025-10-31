@@ -30,6 +30,9 @@ Focused on validation and duplicate prevention.
 
 ### 3. POST — Add a single point
 Added support for inserting one point at a time.  
+Returned:
+- 201 Created when new  
+- 409 Conflict when the point already existed
 
 ---
 
