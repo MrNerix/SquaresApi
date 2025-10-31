@@ -34,7 +34,6 @@ app.MapPost("/points/import", ([FromBody] ImportPointsDto dto, IPointStore store
     return Results.Accepted();
 });
 
-
 // Add a single point. 201 if new, 409 if it already exists.
 app.MapPost("/points", ([FromBody] CreatePointDto dto, IPointStore store) =>
 {
@@ -51,6 +50,12 @@ app.MapPost("/points", ([FromBody] CreatePointDto dto, IPointStore store) =>
     }
 });
 
+// Delete point by coordinate. returns 204 even if it wasn't there.
+app.MapDelete("/points/{x:int},{y:int}", (int x, int y, IPointStore store) =>
+{
+    store.Remove(new Point(x, y)); // Ignore result for idempotency
+    return Results.NoContent();
+});
 
 
 app.Run();

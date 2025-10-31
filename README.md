@@ -3,7 +3,7 @@
 A simple .NET 8 Minimal API that lets you store 2D points and find all squares formed by them.
 
 For a full explanation of how the project was built step by step, see:  
-[EXPLANATION](./EXPLANATION.md)
+[EXPLANATION](/Notes/Explanation.md)
 
 ---
 

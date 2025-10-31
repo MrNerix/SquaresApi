@@ -37,7 +37,8 @@ Returned:
 ---
 
 ### 4. DELETE — Delete a point
-Implement deletion of a point by coordinates.  
+Implemented deletion of a point by coordinates.  
+Chose to make the operation idempotent, always returning 204 No Content, even if the point didn’t exist.
 
 ---
 
