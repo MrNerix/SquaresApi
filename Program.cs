@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using SquaresApi.Models;
 using SquaresApi.Storage;
 using SquaresApi.Core;
+using Microsoft.EntityFrameworkCore;
+using SquaresApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +12,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// SQLite
+var conn = builder.Configuration.GetConnectionString("Default") ?? "Data Source=squares.db";
+builder.Services.AddDbContext<AppDb>(opt => opt.UseSqlite(conn));
 
-builder.Services.AddSingleton<IPointStore, InMemoryPointStore>();
+// Swap to SQLite-backed store
+builder.Services.AddScoped<IPointStore, SqlitePointStore>();
 
 var app = builder.Build();
+
+//Ensure the db exists on startup
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDb>();
+    db.Database.EnsureCreated();
+}
+
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -80,7 +95,7 @@ app.MapGet("/squares", (IPointStore store) =>
 
         squareDtos.Add(new SquareDto(pointDtos));
     }
-    
+
     var response = new SquaresResponse(squareDtos.Count, squareDtos);
 
     // Return a 200 OK result with the response data

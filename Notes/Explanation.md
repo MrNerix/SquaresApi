@@ -76,7 +76,9 @@ All tests pass successfully with `dotnet test`.
 ---
 
 ### 7. Setup Database (Bonus)
-Replac the in-memory storage with a local database.
+I replaced the temporary in-memory storage with a simple SQLite database using Entity Framework Core (EF Core).
+
+The project now uses a local SQLite database via EF Core for persistence. Data is stored in squares.db and automatically created on first run.
 
 ---
 
@@ -84,9 +86,10 @@ Replac the in-memory storage with a local database.
 
 - **Start Time:** 12:00 AM  
 - **Critical requirements done:** 15.10 (~3 hours)  
-- **End Time:** ~
+- **End Time:** 16.10 (~4 hours)
 
 Each commit focuses on a single functional step.
+
 ---
 
 ## Summary of Approach

@@ -1,7 +1,6 @@
 using Xunit;
 using SquaresApi.Core;
 using SquaresApi.Models;
-using System.Linq;
 
 namespace SquaresApi.Tests.Core;
 
