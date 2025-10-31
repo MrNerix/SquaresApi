@@ -16,14 +16,15 @@ My focus was to first get a fully working API using in-memory data, and then rep
 ## My 7-Step Plan (in order of importance)
 
 ### 1. Initial Setup
-Created the base project and folder structure (`Models`, `Core`, `Storage`).  
+Created the base project and folder structure (`Models`, `Storage`).  
 Set up DTOs (data transfer objects) and a temporary in-memory storage implementation.  
 * This provided a clean foundation with separation of concerns before writing any endpoints.
 
 ---
 
 ### 2. POST - Import a list of points
-Implement the endpoint for importing multiple `{x, y}` points at once.
+Implemented the endpoint for importing multiple `{x, y}` points at once.  
+Focused on validation and duplicate prevention.
 
 ---
 
@@ -65,7 +66,7 @@ Each commit focuses on a single functional step.
 My overall focus:
 - Building correct, maintainable code first.  
 - Keeping the project structure clean and modular.  
-- Following **RESTful standards** (proper status codes, idempotent endpoints).  
+- Following RESTful standards (proper status codes, idempotent endpoints).  
 - Completing mandatory requirements before moving to bonus tasks.
 
 ---
