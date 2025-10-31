@@ -15,6 +15,8 @@ For a full explanation of how the project was built step by step, see:
 ## How to Run
 
 1. **Clone the repository**
+   
+   Open Command Prompt and enter:
    ```bash
    git clone https://github.com/MrNerix/SquaresApi.git
    ```
