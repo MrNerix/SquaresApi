@@ -86,7 +86,7 @@ The project now uses a local SQLite database via EF Core for persistence. Data i
 
 - **Start Time:** 12:00 AM  
 - **Critical requirements done:** 15.10 (~3 hours)  
-- **End Time:** 16.10 (~4 hours)
+- **End Time:** 16.10 (~4 hours) + 20 minutes tesing it on another computer and fixing the instructions.
 
 Each commit focuses on a single functional step.
 

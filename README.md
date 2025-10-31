@@ -17,6 +17,8 @@ For a full explanation of how the project was built step by step, see:
 1. **Clone the repository**
    ```bash
    git clone https://github.com/MrNerix/SquaresApi.git
+   ```
+   ```bash
    cd SquaresApi
    ```
 

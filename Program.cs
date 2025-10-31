@@ -32,6 +32,7 @@ using (var scope = app.Services.CreateScope())
 app.UseSwagger();
 app.UseSwaggerUI();
 
+
 // Import a list of points. Duplicates are ignored.
 app.MapPost("/points/import", ([FromBody] ImportPointsDto dto, IPointStore store) =>
 {
@@ -103,6 +104,7 @@ app.MapGet("/squares", (IPointStore store) =>
 });
 
 
+app.MapGet("/", () => Results.Redirect("/swagger"));
 
 
 app.Run();
