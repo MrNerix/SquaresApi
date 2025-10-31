@@ -43,7 +43,20 @@ Chose to make the operation idempotent, always returning 204 No Content, even if
 ---
 
 ### 5. GET — Retrieve identified squares
-Implement square-detection.  
+To satisfy the requirement “Use existing algorithms/libraries to identify squares (don’t reinvent the wheel)”,  
+I implemented the square detection logic using the "NetTopologySuite (NTS)" library.
+
+#### Why NTS:
+- It’s a well-known open-source geometry library for .NET.
+- Provides built-in geometry types (Point, Polygon, Coordinate).
+- Offers ready-to-use methods like ".IsRectangle" for shape validation.
+- Reduces the risk of calculation or logic errors from manual geometry code.
+
+#### How I Use It:
+1. The program iterates through all unique combinations of 4 points.
+2. For each group, it creates an NTS "Polygon" object.
+3. It checks if the polygon is a rectangle ("polygon.IsRectangle").
+4. If all sides are equal (verified manually), it’s identified as a square.
 
 ---
 
@@ -60,6 +73,7 @@ Replac the in-memory storage with a local database.
 ## Timeline
 
 - **Start Time:** 12:00 AM  
+- **Critical requirements done:** 15.10 (~3 hours)  
 - **End Time:** ~
 
 Each commit focuses on a single functional step.

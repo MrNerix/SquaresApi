@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SquaresApi.Models;
 using SquaresApi.Storage;
+using SquaresApi.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,6 +57,37 @@ app.MapDelete("/points/{x:int},{y:int}", (int x, int y, IPointStore store) =>
     store.Remove(new Point(x, y)); // Ignore result for idempotency
     return Results.NoContent();
 });
+
+
+// Get all squares and return how many there are
+app.MapGet("/squares", (IPointStore store) =>
+{
+    // Get all points
+    var points = store.GetAll();
+
+    // Find all sets of 4 points that form squares
+    var foundSquares = SquareFinder.FindSquares(points);
+
+    // Convert each found square into a SquareDto
+    var squareDtos = new List<SquareDto>();
+    foreach (var square in foundSquares)
+    {
+        var pointDtos = new List<CreatePointDto>();
+        foreach (var p in square)
+        {
+            pointDtos.Add(new CreatePointDto(p.X, p.Y));
+        }
+
+        squareDtos.Add(new SquareDto(pointDtos));
+    }
+    
+    var response = new SquaresResponse(squareDtos.Count, squareDtos);
+
+    // Return a 200 OK result with the response data
+    return Results.Ok(response);
+});
+
+
 
 
 app.Run();

@@ -32,3 +32,4 @@ C:\Festo\SquaresApi\obj\Debug\net8.0\SquaresApi.pdb
 C:\Festo\SquaresApi\obj\Debug\net8.0\SquaresApi.genruntimeconfig.cache
 C:\Festo\SquaresApi\obj\Debug\net8.0\ref\SquaresApi.dll
 C:\Festo\SquaresApi\obj\Debug\net8.0\SquaresApi.sourcelink.json
+C:\Festo\SquaresApi\bin\Debug\net8.0\NetTopologySuite.dll
